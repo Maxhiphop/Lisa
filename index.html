@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Лизочка — моё Сердечко</title>
+  <title>Лиза— моя звёздочка </title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
   <style>
     html, body {
@@ -148,7 +148,40 @@
       100% { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
     }
 
+    /* Салют сердечек */
+    .heart {
+      position: fixed;
+      font-size: 24px;
+      color: red;
+      animation: explode 1.5s ease-out forwards;
+      pointer-events: none;
+      z-index: 10;
+    }
+    @keyframes explode {
+      0% { transform: scale(0.5) translate(0,0); opacity: 1; }
+      100% { transform: scale(1.5) translate(var(--x), var(--y)); opacity: 0; }
+    }
 
+    @media screen and (max-width: 480px) {
+      .bubble {
+        width: 75px;
+        height: 75px;
+        font-size: 0.8em;
+      }
+      header h1 {
+        font-size: 2em;
+      }
+      .button-container button {
+        font-size: 0.9em;
+        padding: 10px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="button-container">
+    <button onclick="addBubble()">Добавить сердечко</button>
+  </div>
 
   <header>
     <h1>Лиза — свет моего сердца 💖</h1>
@@ -287,25 +320,6 @@
     }
 
    
-    // Салют сердечек
-    function surprise() {
-      for (let i = 0; i < 20; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerHTML = '❤️';
-        heart.style.left = '50%';
-        heart.style.top = '50%';
-        const angle = Math.random() * 2 * Math.PI;
-        const distance = Math.random() * 200;
-        const x = Math.cos(angle) * distance + 'px';
-        const y = Math.sin(angle) * distance + 'px';
-        heart.style.setProperty('--x', x);
-        heart.style.setProperty('--y', y);
-        document.body.appendChild(heart);
-
-        setTimeout(() => heart.remove(), 1500);
-      }
-    }
   </script>
 </body>
 </html>
